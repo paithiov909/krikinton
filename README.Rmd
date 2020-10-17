@@ -33,7 +33,10 @@ krikinton is an rJava wrapper of [WorksApplications/kintoki](https://github.com/
 
 ```{r}
 # remotes::install_github("paithiov909/krikinton")
-krikinton::kintoki("アニメは1人で作ってるんじゃ無いんだよ！アニメ制作はチームワークなんだ！")
+krikinton::kintoki(c(
+  "アニメは1人で作ってるんじゃないんだよ！",
+  "アニメ制作はチームワークなんだ！"
+))
 ```
 
 ## Licenses

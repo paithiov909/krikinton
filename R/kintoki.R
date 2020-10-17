@@ -39,10 +39,12 @@ kintoki <- function(str) {
             })
             res <- list(
               Sid = idx,
+              Cid = i - 1L,
               Link = chunk$getLink(),
               Score = chunk$getScore(),
               Head = chunk$getHeadPos(),
               Func = chunk$getFuncPos(),
+              Tid = j - 1L,
               res
             )
             return(as.data.frame(res))
