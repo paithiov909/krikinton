@@ -1,11 +1,8 @@
 # Auto detect text files and perform LF normalization
 * text=auto
-
 *.rda binary
-
 *.png binary
 *.svg binary
-
-*.jar binary
-*.dic binary
-*.model binary
+*.jar filter=lfs diff=lfs merge=lfs -text
+*.dic filter=lfs diff=lfs merge=lfs -text
+*.model filter=lfs diff=lfs merge=lfs -text
