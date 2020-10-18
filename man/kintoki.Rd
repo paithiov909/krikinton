@@ -10,7 +10,7 @@ kintoki(str)
 \item{str}{character vector}
 }
 \value{
-tibble
+data.frame
 }
 \description{
 Call Kintoki Parser

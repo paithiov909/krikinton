@@ -1,7 +1,7 @@
 #' Call Kintoki Parser
 #'
 #' @param str character vector
-#' @return tibble
+#' @return data.frame
 #'
 #' @import rJava
 #' @importFrom stringi stri_enc_toutf8
