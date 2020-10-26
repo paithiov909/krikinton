@@ -75,19 +75,19 @@ sudachi <- function(chr) {
             return(as.data.frame(res))
           })
           df <- purrr::map_dfr(df, ~
-           tidyr::separate(
-             .,
-             col = "Feature",
-             into = c(
-               "POS1",
-               "POS2",
-               "POS3",
-               "POS4",
-               "X5StageUse1",
-               "X5StageUse2"
-             ),
-             sep = ","
-           ))
+          tidyr::separate(
+            .,
+            col = "Feature",
+            into = c(
+              "POS1",
+              "POS2",
+              "POS3",
+              "POS4",
+              "X5StageUse1",
+              "X5StageUse2"
+            ),
+            sep = ","
+          ))
           return(purrr::map_dfr(df, ~.))
         } else {
           return(data.frame())

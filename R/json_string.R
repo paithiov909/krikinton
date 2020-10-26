@@ -1,28 +1,36 @@
 #' List Presentation of Sudachi's Setting
 #' @export
-sudachi_json <- list( ## TODO: escape strings
+sudachi_json <- list(
   path = NA_character_,
   systemDict = "system_core.dic",
   inputTextPlugin = list(
     list(class = "com.worksap.nlp.sudachi.DefaultInputTextPlugin"),
-    list(class = "com.worksap.nlp.sudachi.ProlongedSoundMarkInputTextPlugin",
-         prolongedSoundMarks = list("ー", "-", "⁓", "〜", "〰"),
-         replacementSymbol = "ー")
+    list(
+      class = "com.worksap.nlp.sudachi.ProlongedSoundMarkInputTextPlugin",
+      prolongedSoundMarks = list(enc2utf8("\u30fc"), "-", enc2utf8("\u301c"), enc2utf8("\u3030")),
+      replacementSymbol = enc2utf8("\u30fc")
+    )
   ),
   oovProviderPlugin = list(
     list(class = "com.worksap.nlp.sudachi.MeCabOovProviderPlugin"),
-    list(class = "com.worksap.nlp.sudachi.SimpleOovProviderPlugin",
-         oovPOS = list("補助記号", "一般", "*", "*", "*", "*" ),
-         leftId = 5968L,
-         rightid = 5968L,
-         cost = 3857L)
+    list(
+      class = "com.worksap.nlp.sudachi.SimpleOovProviderPlugin",
+      oovPOS = list(enc2utf8("\u88dc\u52a9\u8a18\u53f7"), enc2utf8("\u4e00\u822c"), "*", "*", "*", "*"),
+      leftId = 5968L,
+      rightid = 5968L,
+      cost = 3857L
+    )
   ),
   pathRewritePlugin = list(
-    list(class = "com.worksap.nlp.sudachi.JoinNumericPlugin",
-         joinKanjiNumeric = TRUE),
-    list(class = "com.worksap.nlp.sudachi.JoinKatakanaOovPlugin",
-         oovPOS = list("名詞", "普通名詞", "一般", "*", "*", "*" ),
-         minLength = 3L)
+    list(
+      class = "com.worksap.nlp.sudachi.JoinNumericPlugin",
+      joinKanjiNumeric = TRUE
+    ),
+    list(
+      class = "com.worksap.nlp.sudachi.JoinKatakanaOovPlugin",
+      oovPOS = list(enc2utf8("\u540d\u8a5e"), enc2utf8("\u666e\u901a\u540d\u8a5e"), enc2utf8("\u4e00\u822c"), "*", "*", "*"),
+      minLength = 3L
+    )
   )
 )
 
@@ -39,6 +47,6 @@ json_string <- function(pkgname, libname) {
     system.file("inst/dic", package = pkgname, lib.loc = libname)
   )
   default_json <- sudachi_json
-  default_json$path = dic_path
+  default_json$path <- dic_path
   return(jsonlite::toJSON(default_json, auto_unbox = TRUE, pretty = TRUE))
 }

@@ -56,7 +56,7 @@ Parser <- (function() {
     lib.loc = libname
   )
 
-  rJava::javaImport(packages = "com.worksap.nlp.sudachi.JapaneseDictionary")
+  rJava::javaImport(packages = "com.worksap.nlp.sudachi")
   rJava::javaImport(packages = "com.worksap.nlp.kintoki.cabocha.Cabocha")
   rJava::javaImport(packages = "com.worksap.nlp.kintoki.cabocha.Param")
 
