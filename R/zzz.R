@@ -1,7 +1,23 @@
 #' @noRd
 #' @export
 #' @keywords internal
-param <- NULL
+Param <- (function() {
+  if (!exists("instance")) instance <- NULL
+  function(obj = NULL) {
+    if (!is.null(obj)) instance <<- obj
+    return(instance)
+  }
+})()
+
+#' @noRd
+#' @keywords internal
+Parser <- (function() {
+  if (!exists("instance")) instance <- NULL
+  function(obj = NULL) {
+    if (!is.null(obj)) instance <<- obj
+    return(instance)
+  }
+})()
 
 #' @noRd
 #' @param libname libname
@@ -23,17 +39,17 @@ param <- NULL
   rJava::javaImport(packages = "com.worksap.nlp.kintoki.cabocha.Cabocha")
   rJava::javaImport(packages = "com.worksap.nlp.kintoki.cabocha.Param")
 
-  param <<- rJava::.jnew("com.worksap.nlp.kintoki.cabocha.Param")
+  Param(rJava::.jnew("com.worksap.nlp.kintoki.cabocha.Param"))
 
   if (!pkgload::is_dev_package(pkgname)) {
-    param$loadConfig(system.file("cabocharc.properties", package = pkgname, lib.loc = libname))
-    param$set(param$SUDACHI_DICT, system.file("dic", package = pkgname, lib.loc = libname))
-    param$set(param$CHUNKER_MODEL, system.file("model/chunk.unidic.model", package = pkgname, lib.loc = libname))
-    param$set(param$PARSER_MODEL, system.file("model/dep.unidic.model", package = pkgname, lib.loc = libname))
+    Param()$loadConfig(system.file("cabocharc.properties", package = pkgname, lib.loc = libname))
+    Param()$set(Param()$SUDACHI_DICT, system.file("dic", package = pkgname, lib.loc = libname))
+    Param()$set(Param()$CHUNKER_MODEL, system.file("model/chunk.unidic.model", package = pkgname, lib.loc = libname))
+    Param()$set(Param()$PARSER_MODEL, system.file("model/dep.unidic.model", package = pkgname, lib.loc = libname))
   } else {
-    param$loadConfig(system.file("inst/cabocharc.properties", package = pkgname, lib.loc = libname))
-    param$set(param$SUDACHI_DICT, system.file("inst/dic", package = pkgname, lib.loc = libname))
-    param$set(param$CHUNKER_MODEL, system.file("inst/model/chunk.unidic.model", package = pkgname, lib.loc = libname))
-    param$set(param$PARSER_MODEL, system.file("inst/model/dep.unidic.model", package = pkgname, lib.loc = libname))
+    Param()$loadConfig(system.file("inst/cabocharc.properties", package = pkgname, lib.loc = libname))
+    Param()$set(Param()$SUDACHI_DICT, system.file("inst/dic", package = pkgname, lib.loc = libname))
+    Param()$set(Param()$CHUNKER_MODEL, system.file("inst/model/chunk.unidic.model", package = pkgname, lib.loc = libname))
+    Param()$set(Param()$PARSER_MODEL, system.file("inst/model/dep.unidic.model", package = pkgname, lib.loc = libname))
   }
 }

@@ -4,10 +4,10 @@
 \alias{kintoki}
 \title{Call Kintoki Parser}
 \usage{
-kintoki(str)
+kintoki(chr)
 }
 \arguments{
-\item{str}{character vector}
+\item{chr}{character vector}
 }
 \value{
 data.frame
