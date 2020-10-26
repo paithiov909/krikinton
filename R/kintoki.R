@@ -24,7 +24,7 @@ rebuild_parser <- function() {
 #' @importFrom purrr is_empty
 #' @export
 kintoki <- function(chr) {
-  if (!is.character(chr) || length(chr) != 1L || is.na(chr)) {
+  if (!is.character(chr) || is.na(chr)) {
     message("Invalid characters provided. Chr must be a character vector, not NA_character_.")
     return(invisible(data.frame()))
   } else {

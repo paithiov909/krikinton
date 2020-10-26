@@ -1,4 +1,24 @@
 #' @noRd
+#' @keywords internal
+Dict <- (function() {
+  if (!exists("instance")) instance <- NULL
+  function(obj = NULL) {
+    if (!is.null(obj)) instance <<- obj
+    return(instance)
+  }
+})()
+
+#' @noRd
+#' @keywords internal
+Tokenizer <- (function() {
+  if (!exists("instance")) instance <- NULL
+  function(obj = NULL) {
+    if (!is.null(obj)) instance <<- obj
+    return(instance)
+  }
+})()
+
+#' @noRd
 #' @export
 #' @keywords internal
 Param <- (function() {
@@ -36,8 +56,11 @@ Parser <- (function() {
     lib.loc = libname
   )
 
+  rJava::javaImport(packages = "com.worksap.nlp.sudachi.JapaneseDictionary")
   rJava::javaImport(packages = "com.worksap.nlp.kintoki.cabocha.Cabocha")
   rJava::javaImport(packages = "com.worksap.nlp.kintoki.cabocha.Param")
+
+  rebuild_dictionary(json_string(pkgname, libname))
 
   Param(rJava::.jnew("com.worksap.nlp.kintoki.cabocha.Param"))
 

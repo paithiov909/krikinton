@@ -2,8 +2,13 @@
 
 export(Param)
 export(kintoki)
+export(rebuild_dictionary)
 export(rebuild_parser)
+export(rebuild_tokenizer)
+export(sudachi)
+export(sudachi_json)
 import(rJava)
+importFrom(jsonlite,toJSON)
 importFrom(pkgload,is_dev_package)
 importFrom(purrr,discard)
 importFrom(purrr,imap)
