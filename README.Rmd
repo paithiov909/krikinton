@@ -11,6 +11,9 @@ knitr::opts_chunk$set(
   fig.path = "man/figures/README-",
   out.width = "100%"
 )
+
+require("krikinton")
+krikinton::rebuild_tokenizer()
 ```
 
 # krikinton
@@ -31,11 +34,29 @@ krikinton is an rJava wrapper of [WorksApplications/kintoki](https://github.com/
 
 ## Usage
 
-```{r}
-# remotes::install_github("paithiov909/krikinton")
+### Installation
+
+```r
+remotes::install_github("paithiov909/krikinton")
+```
+
+### Use Sudachi
+
+```{r usage1}
+krikinton::sudachi(c(
+  "なぜ分かり合えないのか！？",
+  "なぜ貴様等は他を出し抜こうとするのか！？",
+  "ところできのこはあんな縦に長かったか！？"
+))
+```
+
+### Use Kintoki
+
+```{r usage2}
 krikinton::kintoki(c(
-  "アニメは1人で作ってるんじゃないんだよ！",
-  "アニメ制作はチームワークなんだ！"
+  "とにかく不様、そんな事ではあの小娘には勝てないわ。",
+  "そう、皆で協力して挑むのだ！",
+  "えー、まぁ今回はその件で伺いました。"
 ))
 ```
 

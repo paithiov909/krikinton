@@ -23,11 +23,12 @@ rebuild_parser <- function() {
 #' @importFrom purrr discard
 #' @importFrom purrr is_empty
 #' @importFrom tibble tibble
+#' @importFrom tibble as_tibble
 #' @export
 kintoki <- function(chr) {
   if (!is.character(chr) || is.na(chr)) {
     message("Invalid characters provided. Chr must be a character vector, not NA_character_.")
-    return(invisible(data.frame()))
+    return(invisible(tibble::tibble()))
   } else {
     texts <- stringi::stri_enc_toutf8(chr)
     if (is.null(Parser())) rebuild_parser()
@@ -78,7 +79,7 @@ kintoki <- function(chr) {
               ),
               sep = ","
             ))
-            return(tokens)
+            return(tibble::as_tibble(tokens))
           })
           return(purrr::map_dfr(df, ~.))
         } else {
