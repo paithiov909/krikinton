@@ -46,6 +46,10 @@ Parser <- (function() {
 #' @importFrom pkgload is_dev_package
 #' @keywords internal
 .onLoad <- function(libname, pkgname) {
+  options(java.parameters = c(
+    getOption("java.parameters"),
+    "--illegal-access=permit"
+  )) ## Try to suppress warning of illegal reflective access from RJavaTools.
   rJava::.jpackage(pkgname,
     morePaths = c(
       "inst/java/kintoki-0.2.0-SNAPSHOT.jar",
@@ -55,10 +59,6 @@ Parser <- (function() {
     ),
     lib.loc = libname
   )
-
-  rJava::javaImport(packages = "com.worksap.nlp.sudachi")
-  rJava::javaImport(packages = "com.worksap.nlp.kintoki.cabocha.Cabocha")
-  rJava::javaImport(packages = "com.worksap.nlp.kintoki.cabocha.Param")
 
   rebuild_dictionary(json_string(pkgname, libname))
 

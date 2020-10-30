@@ -6,14 +6,14 @@
 #' @import rJava
 #' @export
 rebuild_parser <- function() {
-  parser <- Parser(rJava::.jnew("com.worksap.nlp.kintoki.cabocha.Cabocha", Param()))
-  return(invisible(parser))
+  Parser(rJava::.jnew("com.worksap.nlp.kintoki.cabocha.Cabocha", Param()))
+  return(invisible(Parser()))
 }
 
 #' Call Kintoki Parser
 #'
 #' @param chr character vector
-#' @return data.frame
+#' @return tibble
 #'
 #' @import rJava
 #' @importFrom stringi stri_enc_toutf8
@@ -22,6 +22,7 @@ rebuild_parser <- function() {
 #' @importFrom purrr map_dfr
 #' @importFrom purrr discard
 #' @importFrom purrr is_empty
+#' @importFrom tibble tibble
 #' @export
 kintoki <- function(chr) {
   if (!is.character(chr) || is.na(chr)) {
@@ -29,11 +30,11 @@ kintoki <- function(chr) {
     return(invisible(data.frame()))
   } else {
     texts <- stringi::stri_enc_toutf8(chr)
-    if (is.null(parser <- Parser())) parser <- rebuild_parser()
+    if (is.null(Parser())) rebuild_parser()
 
     results <- purrr::imap(texts, function(sent, idx) {
       if (!is.na(sent)) {
-        tree <- rJava::J(parser, "parse", sent)
+        tree <- rJava::J(Parser(), "parse", sent)
 
         chunk_size <- tree$getChunkSize()
 
@@ -81,10 +82,10 @@ kintoki <- function(chr) {
           })
           return(purrr::map_dfr(df, ~.))
         } else {
-          return(data.frame())
+          return(tibble::tibble())
         }
       } else {
-        return(data.frame())
+        return(tibble::tibble())
       }
     })
 

@@ -7,8 +7,8 @@
 #' @import rJava
 #' @export
 rebuild_dictionary <- function(json_string) {
-  dictionary <- Dict(rJava::.jnew("com.worksap.nlp.sudachi.JapaneseDictionary", json_string))
-  return(invisible(dictionary))
+  Dict(rJava::.jnew("com.worksap.nlp.sudachi.JapaneseDictionary", json_string))
+  return(invisible(Dict()))
 }
 
 #' Rebuild Sudachi Tokenizer
@@ -19,14 +19,14 @@ rebuild_dictionary <- function(json_string) {
 #' @import rJava
 #' @export
 rebuild_tokenizer <- function() {
-  tokenizer <- Tokenizer(rJava::J(Dict(), "create"))
-  return(invisible(tokenizer))
+  Tokenizer(rJava::J(Dict(), "create"))
+  return(invisible(Tokenizer()))
 }
 
 #' Call Sudachi Tagger
 #'
 #' @param chr character vector
-#' @return data.frame
+#' @return tibble
 #'
 #' @import rJava
 #' @importFrom stringi stri_enc_toutf8
@@ -35,18 +35,19 @@ rebuild_tokenizer <- function() {
 #' @importFrom purrr map_dfr
 #' @importFrom purrr discard
 #' @importFrom purrr is_empty
+#' @importFrom tibble tibble
 #' @export
 sudachi <- function(chr) {
   if (!is.character(chr) || is.na(chr)) {
     message("Invalid characters provided. Chr must be a character vector, not NA_character_.")
-    return(invisible(data.frame()))
+    return(invisible(tibble::tibble()))
   } else {
     texts <- stringi::stri_enc_toutf8(chr)
-    if (is.null(tokenizer <- Tokenizer())) tokenizer <- rebuild_tokenizer()
+    if (is.null(Tokenizer())) rebuild_tokenizer()
 
     results <- purrr::imap(texts, function(sent, idx) {
       if (!is.na(sent)) {
-        morphemes <- tokenizer$tokenize(sent)
+        morphemes <- Tokenizer()$tokenize(sent)
         morph_size <- morphemes$size()
 
         if (!rJava::is.jnull(morph_size)) {
@@ -90,10 +91,10 @@ sudachi <- function(chr) {
           ))
           return(purrr::map_dfr(df, ~.))
         } else {
-          return(data.frame())
+          return(tibble::tibble())
         }
       } else {
-        return(data.frame())
+        return(tibble::tibble())
       }
     })
 
