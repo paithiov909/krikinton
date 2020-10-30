@@ -36,6 +36,7 @@ rebuild_tokenizer <- function() {
 #' @importFrom purrr discard
 #' @importFrom purrr is_empty
 #' @importFrom tibble tibble
+#' @importFrom tibble as_tibble
 #' @export
 sudachi <- function(chr) {
   if (!is.character(chr) || is.na(chr)) {
@@ -89,7 +90,7 @@ sudachi <- function(chr) {
             ),
             sep = ","
           ))
-          return(purrr::map_dfr(df, ~.))
+          return(tibble::as_tibble(df))
         } else {
           return(tibble::tibble())
         }
