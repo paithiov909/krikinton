@@ -8,7 +8,7 @@ rebuild_tokenizer()
 }
 \value{
 returns a binding to the instance of
-`com.worksap.nlp.sudachi.JapaneseTokenizer` invisibly
+\code{com.worksap.nlp.sudachi.JapaneseTokenizer} invisibly
 }
 \description{
 Rebuild Sudachi Tokenizer

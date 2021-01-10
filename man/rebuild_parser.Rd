@@ -8,7 +8,7 @@ rebuild_parser()
 }
 \value{
 returns a binding to the instance of
-`com.worksap.nlp.kintoki.cabocha.Cabocha` invisibly
+\code{com.worksap.nlp.kintoki.cabocha.Cabocha} invisibly
 }
 \description{
 Rebuild Kintoki Parser

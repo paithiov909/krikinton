@@ -1,25 +1,28 @@
 Package: krikinton
 Type: Package
-Title: rJava Wrapper of Kintoki
-Version: 0.0.0.200
+Title: rJava Wrapper of Kintoki and Sudachi
+Version: 0.0.0.203
 Authors@R: c(
     person("Kato", "Akiru", email = "paithiov909@gmail.com", role = c("aut", "cre")))
-Author: paithiov909 [aut, cre]
 Maintainer: Kato Akiru <paithiov909@gmail.com>
-Description: rJava wrapper of WorksApplications/kintoki
-  (a port of the CaboCha to Java).
+Description: rJava wrapper of Kintoki (a port of the CaboCha to Java) and Sudachi.
 SystemRequirements: Java (>= 1.8.0)
 License: MIT + file LICENSE
-URL: https://github.com/paithiov909/krikinton
+URL: https://paithiov909.github.io/krikinton, https://github.com/paithiov909/krikinton
 BugReports: https://github.com/paithiov909/krikinton/issues
 Encoding: UTF-8
 LazyData: true
+Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Imports: 
     rJava,
     pkgload,
     jsonlite,
     stringi,
+    tibble,
     tidyr,
-    purrr,
-    tibble
+    purrr
+Suggests: 
+    knitr,
+    rmarkdown,
+    tidyverse

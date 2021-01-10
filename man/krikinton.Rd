@@ -6,12 +6,12 @@
 \alias{krikinton-package}
 \title{krikinton: rJava Wrapper of Kintoki}
 \description{
-rJava wrapper of WorksApplications/kintoki
-  (a port of the CaboCha to Java).
+rJava wrapper of Kintoki (a port of the CaboCha to Java) and Sudachi.
 }
 \seealso{
 Useful links:
 \itemize{
+  \item \url{https://paithiov909.github.io/krikinton}
   \item \url{https://github.com/paithiov909/krikinton}
   \item Report bugs at \url{https://github.com/paithiov909/krikinton/issues}
 }

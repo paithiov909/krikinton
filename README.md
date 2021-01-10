@@ -5,22 +5,22 @@
 
 <!-- badges: start -->
 
+[![GitHub last
+commit](https://img.shields.io/github/last-commit/paithiov909/krikinton)](#)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![GitHub
+license](https://img.shields.io/github/license/paithiov909/krikinton)](https://github.com/paithiov909/krikinton/blob/master/LICENSE)
 <!-- badges: end -->
 
-## About
-
-krikinton is an rJava wrapper of
-[WorksApplications/kintoki](https://github.com/WorksApplications/kintoki)
-(a port of the CaboCha to Java).
-
-:heavy\_exclamation\_mark: This package is quite heavy (\> 270MB)
-because of including some binary files\!\!
+> rJava wrapper of Kintoki (a port of the CaboCha to Java) and Sudachi
 
 ## System Requirements
 
   - Java (\>= 1.8.0)
+
+Installing this package also requires Git LFS, because of including
+quite heavy (\> 270MB) binary files.
 
 ## Usage
 
@@ -114,3 +114,10 @@ these models.
 As referred here, you can use these model files for only
 research/private use with your own responsibility. For commercial use,
 you must prepare your original model files so as to use this software.
+
+## Code of Conduct
+
+Please note that the krikinton project is released with a [Contributor
+Code of
+Conduct](https://paithiov909.github.io/krikinton/CODE_OF_CONDUCT.html).
+By contributing to this project, you agree to abide by its terms.

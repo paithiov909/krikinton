@@ -11,7 +11,7 @@ rebuild_dictionary(json_string)
 }
 \value{
 returns a binding to the instance of
-`com.worksap.nlp.sudachi.JapaneseDictionary` invisibly
+\code{com.worksap.nlp.sudachi.JapaneseDictionary} invisibly
 }
 \description{
 Rebuild Dictionary
