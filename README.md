@@ -19,7 +19,7 @@ license](https://img.shields.io/github/license/paithiov909/krikinton)](https://g
 
   - Java (\>= 1.8.0)
 
-Installing this package also requires Git LFS, because of including
+Installing this package also requires Git LFS, because of its including
 quite heavy (\> 270MB) binary files.
 
 ## Usage

@@ -8,7 +8,7 @@ Maintainer: Kato Akiru <paithiov909@gmail.com>
 Description: rJava wrapper of Kintoki (a port of the CaboCha to Java) and Sudachi.
 SystemRequirements: Java (>= 1.8.0)
 License: MIT + file LICENSE
-URL: https://paithiov909.github.io/krikinton, https://github.com/paithiov909/krikinton
+URL: https://github.com/paithiov909/krikinton
 BugReports: https://github.com/paithiov909/krikinton/issues
 Encoding: UTF-8
 LazyData: true
