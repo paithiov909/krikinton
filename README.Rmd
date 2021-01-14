@@ -12,8 +12,7 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 
-require("krikinton")
-krikinton::rebuild_tokenizer()
+require(krikinton)
 ```
 
 # krikinton
@@ -24,7 +23,7 @@ krikinton::rebuild_tokenizer()
 [![GitHub license](https://img.shields.io/github/license/paithiov909/krikinton)](https://github.com/paithiov909/krikinton/blob/master/LICENSE)
 <!-- badges: end -->
 
-> rJava wrapper of Kintoki (a port of the CaboCha to Java) and Sudachi
+> rJava wrapper of [Kintoki](https://github.com/WorksApplications/kintoki) (a port of the CaboCha to Java) and [Sudachi](https://github.com/WorksApplications/Sudachi)
 
 ## System Requirements
 
@@ -36,13 +35,13 @@ Installing this package also requires Git LFS, because of its including quite he
 
 ### Installation
 
-```r
+``` r
 remotes::install_github("paithiov909/krikinton")
 ```
 
 ### Use Sudachi
 
-```{r usage1}
+```{r usage_1}
 krikinton::sudachi(c(
   "なぜ分かり合えないのか！？",
   "なぜ貴様等は他を出し抜こうとするのか！？",
@@ -52,19 +51,13 @@ krikinton::sudachi(c(
 
 ### Use Kintoki
 
-```{r usage2}
+```{r usage_2}
 krikinton::kintoki(c(
   "とにかく不様、そんな事ではあの小娘には勝てないわ。",
   "そう、皆で協力して挑むのだ！",
   "えー、まぁ今回はその件で伺いました。"
 ))
 ```
-
-## Licenses
-
-Distributed under the MIT license.
-
-This software includes works licensed under [Apache License, Version2.0](http://www.apache.org/licenses/LICENSE-2.0.html).
 
 ## Disclaimers
 
@@ -83,3 +76,9 @@ As referred here, you can use these model files for only research/private use wi
 ## Code of Conduct
 
 Please note that the krikinton project is released with a [Contributor Code of Conduct](https://paithiov909.github.io/krikinton/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.
+
+## Licenses
+
+Distributed under the MIT license.
+
+This software includes works licensed under [Apache License, Version2.0](http://www.apache.org/licenses/LICENSE-2.0.html).

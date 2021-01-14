@@ -16,12 +16,11 @@ rebuild_parser <- function() {
 #' @return tibble
 #'
 #' @import rJava
+#' @import dplyr
+#' @import purrr
+#' @importFrom furrr future_imap
 #' @importFrom stringi stri_enc_toutf8
 #' @importFrom tidyr separate
-#' @importFrom purrr imap
-#' @importFrom purrr map_dfr
-#' @importFrom purrr discard
-#' @importFrom purrr is_empty
 #' @importFrom tibble tibble
 #' @importFrom tibble as_tibble
 #' @export
@@ -33,7 +32,7 @@ kintoki <- function(chr) {
     texts <- stringi::stri_enc_toutf8(chr)
     if (is.null(Parser())) rebuild_parser()
 
-    results <- purrr::imap(texts, function(sent, idx) {
+    results <- furrr::future_imap(texts, function(sent, idx) {
       if (!is.na(sent)) {
         tree <- rJava::J(Parser(), "parse", sent)
 
@@ -63,23 +62,34 @@ kintoki <- function(chr) {
                 Tid = j - 1L,
                 res
               )
-              return(as.data.frame(res))
+              return(as.data.frame(res, stringsAsFactors = FALSE))
             })
-            tokens <- purrr::map_dfr(tokens, ~
-            tidyr::separate(
-              .,
-              col = "Feature",
-              into = c(
-                "POS1",
-                "POS2",
-                "POS3",
-                "POS4",
-                "X5StageUse1",
-                "X5StageUse2"
-              ),
-              sep = ","
+            tokens <- purrr::map_dfr(tokens,
+            ~ tidyr::separate(
+                .,
+                col = "Feature",
+                into = c(
+                  "POS1",
+                  "POS2",
+                  "POS3",
+                  "POS4",
+                  "X5StageUse1",
+                  "X5StageUse2"
+                ),
+                sep = ","
+              )
+            )
+            return(dplyr::mutate(
+              tibble::as_tibble(tokens),
+              dplyr::across(
+                where(is.character),
+                ~ dplyr::if_else(
+                  . == "*",
+                  NA_character_,
+                  .
+                )
+              )
             ))
-            return(tibble::as_tibble(tokens))
           })
           return(purrr::map_dfr(df, ~.))
         } else {
