@@ -29,12 +29,11 @@ rebuild_tokenizer <- function() {
 #' @return tibble
 #'
 #' @import rJava
+#' @import dplyr
+#' @import purrr
+#' @importFrom furrr future_imap
 #' @importFrom stringi stri_enc_toutf8
 #' @importFrom tidyr separate
-#' @importFrom purrr imap
-#' @importFrom purrr map_dfr
-#' @importFrom purrr discard
-#' @importFrom purrr is_empty
 #' @importFrom tibble tibble
 #' @importFrom tibble as_tibble
 #' @export
@@ -46,7 +45,7 @@ sudachi <- function(chr) {
     texts <- stringi::stri_enc_toutf8(chr)
     if (is.null(Tokenizer())) rebuild_tokenizer()
 
-    results <- purrr::imap(texts, function(sent, idx) {
+    results <- furrr::future_imap(texts, function(sent, idx) {
       if (!is.na(sent)) {
         morphemes <- Tokenizer()$tokenize(sent)
         morph_size <- morphemes$size()
@@ -74,23 +73,34 @@ sudachi <- function(chr) {
               res,
               isOOV = morpheme$isOOV()
             )
-            return(as.data.frame(res))
+            return(as.data.frame(res, stiringsAsFactors = FALSE))
           })
-          df <- purrr::map_dfr(df, ~
-          tidyr::separate(
-            .,
-            col = "Feature",
-            into = c(
-              "POS1",
-              "POS2",
-              "POS3",
-              "POS4",
-              "X5StageUse1",
-              "X5StageUse2"
-            ),
-            sep = ","
+          df <- purrr::map_dfr(df,
+          ~ tidyr::separate(
+              .,
+              col = "Feature",
+              into = c(
+                "POS1",
+                "POS2",
+                "POS3",
+                "POS4",
+                "X5StageUse1",
+                "X5StageUse2"
+              ),
+              sep = ","
+            )
+          )
+          return(dplyr::mutate(
+            tibble::as_tibble(df),
+            dplyr::across(
+              where(is.character),
+              ~ dplyr::if_else(
+                . == "*",
+                NA_character_,
+                .
+              )
+            )
           ))
-          return(tibble::as_tibble(df))
         } else {
           return(tibble::tibble())
         }

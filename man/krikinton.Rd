@@ -11,7 +11,6 @@ rJava wrapper of Kintoki (a port of the CaboCha to Java) and Sudachi.
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://paithiov909.github.io/krikinton}
   \item \url{https://github.com/paithiov909/krikinton}
   \item Report bugs at \url{https://github.com/paithiov909/krikinton/issues}
 }

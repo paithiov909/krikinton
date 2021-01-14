@@ -1,7 +1,7 @@
 Package: krikinton
 Type: Package
 Title: rJava Wrapper of Kintoki and Sudachi
-Version: 0.0.0.203
+Version: 0.0.0.300
 Authors@R: c(
     person("Kato", "Akiru", email = "paithiov909@gmail.com", role = c("aut", "cre")))
 Maintainer: Kato Akiru <paithiov909@gmail.com>
@@ -16,11 +16,13 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Imports: 
     rJava,
-    pkgload,
+    dplyr,
+    furrr,
     jsonlite,
     stringi,
     tibble,
     tidyr,
+    pkgload,
     purrr
 Suggests: 
     knitr,
