@@ -20,10 +20,10 @@ license](https://img.shields.io/github/license/paithiov909/krikinton)](https://g
 
 ## System Requirements
 
-  - Java (\>= 1.8.0)
+-   Java (&gt;= 1.8.0)
 
 Installing this package also requires Git LFS, because of its including
-quite heavy (\> 270MB) binary files.
+quite heavy (&gt; 270MB) binary files.
 
 ## Usage
 
@@ -89,23 +89,30 @@ This software is re-distributing model files originally included in
 license, Apache License, LGPL, and new BSD license are NOT applied to
 these models.
 
-> 付属のモデルファイル(model 以下のファイル)にはBSDライセンス は適用されません。BSDライセンス は,
-> 付属のプログラムや学習ツールのソース・コード, ドキュメントのみに適用されます。
-> 
-> 付属のモデルファイルは, 株式会社毎日新聞社の御厚意により 配布されている毎日新聞記事CD-ROM版を基に学習,
+> 付属のモデルファイル(model 以下のファイル)にはBSDライセンス
+> は適用されません。BSDライセンス は,
+> 付属のプログラムや学習ツールのソース・コード,
+> ドキュメントのみに適用されます。
+>
+> 付属のモデルファイルは, 株式会社毎日新聞社の御厚意により
+> 配布されている毎日新聞記事CD-ROM版を基に学習,
 > 作成されたものです。付属のモデルファイルは,
-> 毎日新聞データ使用許諾に関する覚書に記載の利用条件内で
-> その使用及び, 複製，改変，頒布が認められます. そのため配布しているモデルをそのままの形で使うことは, 研究目的,
+> 毎日新聞データ使用許諾に関する覚書に記載の利用条件内で その使用及び,
+> 複製，改変，頒布が認められます.
+> そのため配布しているモデルをそのままの形で使うことは, 研究目的,
 > 個人利用に限られます. 誤解ないように言っておくと, これは, CaboCha
 > の利用が研究目的に限定されていることを意味しません。
-> ご自身で用意なさったコーパスを基に, 独自にモデルを学習, 作成した場合は研究目的以外の利用が可能です。
-> 
-> 奈良先端科学技術大学院大学ならびに工藤 拓は, CaboCha のプログラム 及び付属のモデルファイルの保証,
-> および特定目的の適合性の保証を含め いかなる保証をも行うものではなく，
-> CaboCha のプログラム 及び付属のモデルを使用，複製，改変，頒布により生じた損害や賠償等については，
+> ご自身で用意なさったコーパスを基に, 独自にモデルを学習,
+> 作成した場合は研究目的以外の利用が可能です。
+>
+> 奈良先端科学技術大学院大学ならびに工藤 拓は, CaboCha のプログラム
+> 及び付属のモデルファイルの保証, および特定目的の適合性の保証を含め
+> いかなる保証をも行うものではなく， CaboCha のプログラム
+> 及び付属のモデルを使用，複製，改変，頒布により生じた損害や賠償等については，
 > 法律上の根拠を問わず一切責任を負いません. ご注意ください。
-> 
-> 将来的には, 著作権やライセンス上の問題から, モデルファイルとプログラムを分割 して配布する予定です。
+>
+> 将来的には, 著作権やライセンス上の問題から,
+> モデルファイルとプログラムを分割 して配布する予定です。
 
 As referred here, you can use these model files for only
 research/private use with your own responsibility. For commercial use,

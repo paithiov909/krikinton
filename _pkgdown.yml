@@ -1,3 +1,7 @@
 destination: docs
 
 url: https://paithiov909.github.io/krikinton
+
+template:
+  params:
+    ganalytics: UA-73417314-25
