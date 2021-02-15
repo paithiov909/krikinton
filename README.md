@@ -84,7 +84,7 @@ krikinton::kintoki(c(
 
 ## Disclaimers
 
-This software is re-distributing model files originally included in
+This software is redistributing model files originally included in
 [CaboCha](https://taku910.github.io/cabocha/). However, any of MIT
 license, Apache License, LGPL, and new BSD license are NOT applied to
 these models.
@@ -127,7 +127,7 @@ By contributing to this project, you agree to abide by its terms.
 
 ## Licenses
 
-Distributed under the MIT license.
+MIT license.
 
-This software includes works licensed under [Apache License,
+This software includes works licensed under [the Apache License,
 Version2.0](http://www.apache.org/licenses/LICENSE-2.0.html).

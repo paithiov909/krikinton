@@ -3,7 +3,7 @@ Type: Package
 Title: rJava Wrapper of Kintoki and Sudachi
 Version: 0.0.0.300
 Authors@R: c(
-    person("Kato", "Akiru", email = "paithiov909@gmail.com", role = c("aut", "cre")))
+    person("Akiru", "Kato", email = "paithiov909@gmail.com", role = c("aut", "cre")))
 Maintainer: Kato Akiru <paithiov909@gmail.com>
 Description: rJava wrapper of Kintoki (a port of the CaboCha to Java) and Sudachi.
 SystemRequirements: Java (>= 1.8.0)
