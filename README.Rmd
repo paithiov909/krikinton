@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 require(krikinton)
 ```
 
-# krikinton
+# krikinton <a href='https://paithiov909.github.io/krikinton'><img src='https://raw.githack.com/paithiov909/krikinton/main/man/figures/logo.png' align="right" height="139" /></a>
 
 <!-- badges: start -->
 [![GitHub last commit](https://img.shields.io/github/last-commit/paithiov909/krikinton)](#)
@@ -81,3 +81,6 @@ Please note that the krikinton project is released with a [Contributor Code of C
 MIT license.
 
 This software includes works licensed under [the Apache License, Version2.0](http://www.apache.org/licenses/LICENSE-2.0.html).
+
+Icons made by [Freepik](https://www.freepik.com) from [www.flaticon.com](https://www.flaticon.com/).
+

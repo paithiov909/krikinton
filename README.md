@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# krikinton
+# krikinton <a href='https://paithiov909.github.io/krikinton'><img src='https://raw.githack.com/paithiov909/krikinton/main/man/figures/logo.png' align="right" height="139" /></a>
 
 <!-- badges: start -->
 
@@ -131,3 +131,6 @@ MIT license.
 
 This software includes works licensed under [the Apache License,
 Version2.0](http://www.apache.org/licenses/LICENSE-2.0.html).
+
+Icons made by [Freepik](https://www.freepik.com) from
+[www.flaticon.com](https://www.flaticon.com/).
