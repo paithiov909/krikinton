@@ -4,11 +4,11 @@
 \name{krikinton}
 \alias{krikinton}
 \alias{krikinton-package}
-\title{krikinton: rJava Wrapper of Kintoki}
+\title{krikinton: rJava Wrapper of Sudachi and Kintoki}
 \description{
 \if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
 
-rJava wrapper of Kintoki (a port of the CaboCha to Java) and Sudachi.
+rJava wrapper of Sudachi and Kintoki (a port of the CaboCha to Java).
 }
 \seealso{
 Useful links:

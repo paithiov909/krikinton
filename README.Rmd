@@ -11,18 +11,18 @@ knitr::opts_chunk$set(
   fig.path = "man/figures/README-",
   out.width = "100%"
 )
-require(krikinton)
+pkgload::load_all()
 ```
 
-# krikinton <a href='https://paithiov909.github.io/krikinton'><img src='https://raw.githack.com/paithiov909/krikinton/main/man/figures/logo.png' align="right" height="139" /></a>
+# krikinton <a href='https://paithiov909.github.io/krikinton'><img src='https://rawcdn.githack.com/paithiov909/krikinton/031b830d9e24fef6acc7113d61ba41308a54b0ec/man/figures/logo.png' align="right" height="139" /></a>
 
 <!-- badges: start -->
 [![GitHub last commit](https://img.shields.io/github/last-commit/paithiov909/krikinton)](#)
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-[![GitHub license](https://img.shields.io/github/license/paithiov909/krikinton)](https://github.com/paithiov909/krikinton/blob/master/LICENSE)
+[![GitHub license](https://img.shields.io/github/license/paithiov909/krikinton)](https://github.com/paithiov909/krikinton/blob/main/LICENSE)
 <!-- badges: end -->
 
-> rJava wrapper of [Kintoki](https://github.com/WorksApplications/kintoki) (a port of the CaboCha to Java) and [Sudachi](https://github.com/WorksApplications/Sudachi)
+> rJava wrapper of [Sudachi](https://github.com/WorksApplications/Sudachi) and [Kintoki](https://github.com/WorksApplications/kintoki) (a port of the CaboCha to Java)
 
 ## System Requirements
 
@@ -72,11 +72,7 @@ This software is redistributing model files originally included in [CaboCha](htt
 
 As referred here, you can use these model files for only research/private use with your own responsibility. For commercial use, you must prepare your original model files so as to use this software.
 
-## Code of Conduct
-
-Please note that the krikinton project is released with a [Contributor Code of Conduct](https://paithiov909.github.io/krikinton/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.
-
-## Licenses
+## License
 
 MIT license.
 

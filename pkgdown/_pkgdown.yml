@@ -2,6 +2,14 @@ destination: docs
 
 url: https://paithiov909.github.io/krikinton
 
-template:
-  params:
-    ganalytics: UA-73417314-25
+reference:
+  - title: "Core"
+    contents:
+      - sudachi
+      - kintoki
+  - title: "Misc"
+    contents:
+      - rebuild_tokenizer
+      - rebuild_parser
+      - rebuild_dictionary
+      - sudachi_json

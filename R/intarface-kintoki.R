@@ -1,7 +1,7 @@
 #' Rebuild Kintoki Parser
 #'
-#' @return returns a binding to the instance of
-#' `com.worksap.nlp.kintoki.cabocha.Cabocha` invisibly
+#' @return a binding to the instance of
+#' `com.worksap.nlp.kintoki.cabocha.Cabocha` is returned invisibly.
 #'
 #' @import rJava
 #' @export
@@ -15,24 +15,16 @@ rebuild_parser <- function() {
 #' @param chr character vector
 #' @return tibble
 #'
-#' @import rJava
-#' @import dplyr
-#' @import purrr
-#' @importFrom furrr future_imap
-#' @importFrom stringi stri_enc_toutf8
-#' @importFrom tidyr separate
-#' @importFrom tibble tibble
-#' @importFrom tibble as_tibble
 #' @export
 kintoki <- function(chr) {
   if (!is.character(chr) || is.na(chr)) {
     message("Invalid characters provided. Chr must be a character vector, not NA_character_.")
-    return(invisible(tibble::tibble()))
+    return(invisible(tibble()))
   } else {
-    texts <- stringi::stri_enc_toutf8(chr)
+    texts <- stri_enc_toutf8(chr)
     if (is.null(Parser())) rebuild_parser()
 
-    results <- furrr::future_imap(texts, function(sent, idx) {
+    results <- imap(texts, function(sent, idx) {
       if (!is.na(sent)) {
         tree <- rJava::J(Parser(), "parse", sent)
 
@@ -53,19 +45,20 @@ kintoki <- function(chr) {
                 return(elem)
               })
               res <- list(
-                Sid = idx,
-                Cid = i - 1L,
+                sentence_id = idx,
+                chunk_id = i - 1L,
                 Link = chunk$getLink(),
                 Score = chunk$getScore(),
                 Head = chunk$getHeadPos(),
                 Func = chunk$getFuncPos(),
-                Tid = j - 1L,
+                token_id = j - 1L,
                 res
               )
               return(as.data.frame(res, stringsAsFactors = FALSE))
             })
-            tokens <- purrr::map_dfr(tokens,
-            ~ tidyr::separate(
+            tokens <- map_dfr(
+              tokens,
+              ~ separate(
                 .,
                 col = "Feature",
                 into = c(
@@ -79,11 +72,11 @@ kintoki <- function(chr) {
                 sep = ","
               )
             )
-            return(dplyr::mutate(
-              tibble::as_tibble(tokens),
-              dplyr::across(
+            return(mutate(
+              as_tibble(tokens),
+              across(
                 where(is.character),
-                ~ dplyr::if_else(
+                ~ if_else(
                   . == "*",
                   NA_character_,
                   .
@@ -91,17 +84,17 @@ kintoki <- function(chr) {
               )
             ))
           })
-          return(purrr::map_dfr(df, ~.))
+          return(map_dfr(df, ~.))
         } else {
-          return(tibble::tibble())
+          return(tibble())
         }
       } else {
-        return(tibble::tibble())
+        return(tibble())
       }
     })
 
-    return(purrr::map_dfr(
-      purrr::discard(results, ~ purrr::is_empty(.)),
+    return(map_dfr(
+      discard(results, ~ is_empty(.)),
       ~.
     ))
   }

@@ -1,5 +1,4 @@
 #' @noRd
-#' @keywords internal
 Dict <- (function() {
   if (!exists("instance")) instance <- NULL
   function(obj = NULL) {
@@ -9,7 +8,6 @@ Dict <- (function() {
 })()
 
 #' @noRd
-#' @keywords internal
 Tokenizer <- (function() {
   if (!exists("instance")) instance <- NULL
   function(obj = NULL) {
@@ -30,7 +28,6 @@ Param <- (function() {
 })()
 
 #' @noRd
-#' @keywords internal
 Parser <- (function() {
   if (!exists("instance")) instance <- NULL
   function(obj = NULL) {
@@ -39,17 +36,20 @@ Parser <- (function() {
   }
 })()
 
+#' Save options
+#' @noRd
+.op <- NULL
+
 #' @noRd
 #' @param libname libname
 #' @param pkgname pkgname
-#' @import rJava
-#' @importFrom pkgload is_dev_package
 #' @keywords internal
 .onLoad <- function(libname, pkgname) {
-  options(java.parameters = c(
+  ## Try to suppress warning that illegal reflective access from RJavaTools.
+  .op <<- options(java.parameters = c(
     getOption("java.parameters"),
     "--illegal-access=permit"
-  )) ## Try to suppress warning of illegal reflective access from RJavaTools.
+  ))
   rJava::.jpackage(pkgname,
     morePaths = c(
       "inst/java/kintoki-0.2.0-SNAPSHOT.jar",
@@ -64,7 +64,7 @@ Parser <- (function() {
 
   Param(rJava::.jnew("com.worksap.nlp.kintoki.cabocha.Param"))
 
-  if (!pkgload::is_dev_package(pkgname)) {
+  if (!is_dev_package(pkgname)) {
     Param()$loadConfig(system.file("cabocharc.properties", package = pkgname, lib.loc = libname))
     Param()$set(Param()$SUDACHI_DICT, system.file("dic", package = pkgname, lib.loc = libname))
     Param()$set(Param()$CHUNKER_MODEL, system.file("model/chunk.unidic.model", package = pkgname, lib.loc = libname))
@@ -75,4 +75,11 @@ Parser <- (function() {
     Param()$set(Param()$CHUNKER_MODEL, system.file("inst/model/chunk.unidic.model", package = pkgname, lib.loc = libname))
     Param()$set(Param()$PARSER_MODEL, system.file("inst/model/dep.unidic.model", package = pkgname, lib.loc = libname))
   }
+}
+
+#' @noRd
+#' @param libpath libpath
+#' @keywords internal
+.onUnload <- function(libpath) {
+  options(.op)
 }

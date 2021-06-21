@@ -10,8 +10,8 @@ rebuild_dictionary(json_string)
 \item{json_string}{character scalar. valid json string}
 }
 \value{
-returns a binding to the instance of
-\code{com.worksap.nlp.sudachi.JapaneseDictionary} invisibly
+a binding to the instance of
+\code{com.worksap.nlp.sudachi.JapaneseDictionary} is returned invisibly.
 }
 \description{
 Rebuild Dictionary

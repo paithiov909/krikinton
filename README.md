@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# krikinton <a href='https://paithiov909.github.io/krikinton'><img src='https://raw.githack.com/paithiov909/krikinton/main/man/figures/logo.png' align="right" height="139" /></a>
+# krikinton <a href='https://paithiov909.github.io/krikinton'><img src='https://rawcdn.githack.com/paithiov909/krikinton/031b830d9e24fef6acc7113d61ba41308a54b0ec/man/figures/logo.png' align="right" height="139" /></a>
 
 <!-- badges: start -->
 
@@ -10,13 +10,13 @@ commit](https://img.shields.io/github/last-commit/paithiov909/krikinton)](#)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![GitHub
-license](https://img.shields.io/github/license/paithiov909/krikinton)](https://github.com/paithiov909/krikinton/blob/master/LICENSE)
+license](https://img.shields.io/github/license/paithiov909/krikinton)](https://github.com/paithiov909/krikinton/blob/main/LICENSE)
 <!-- badges: end -->
 
 > rJava wrapper of
+> [Sudachi](https://github.com/WorksApplications/Sudachi) and
 > [Kintoki](https://github.com/WorksApplications/kintoki) (a port of the
-> CaboCha to Java) and
-> [Sudachi](https://github.com/WorksApplications/Sudachi)
+> CaboCha to Java)
 
 ## System Requirements
 
@@ -42,19 +42,20 @@ krikinton::sudachi(c(
   "ところできのこはあんな縦に長かったか！？"
 ))
 #> # A tibble: 32 x 12
-#>      Sid Surface Reading Normalized Original POS1  POS2  POS3  POS4  X5StageUse1
-#>    <int> <chr>   <chr>   <chr>      <chr>    <chr> <chr> <chr> <chr> <chr>      
-#>  1     1 なぜ    ナゼ    何故       なぜ     副詞  <NA>  <NA>  <NA>  <NA>       
-#>  2     1 分かり合え~ ワカリアエ~ 分かり合う 分かり合える~ 動詞  一般  <NA>  <NA>  下一段-ア行
-#>  3     1 ない    ナイ    ない       ない     助動詞~ <NA>  <NA>  <NA>  助動詞-ナイ
-#>  4     1 の      ノ      の         の       助詞  準体助詞~ <NA>  <NA>  <NA>       
-#>  5     1 か      カ      か         か       助詞  終助詞~ <NA>  <NA>  <NA>       
-#>  6     1 ！      キゴウ  ！         !        補助記号~ 句点  <NA>  <NA>  <NA>       
-#>  7     1 ？      キゴウ  ？         ？       補助記号~ 句点  <NA>  <NA>  <NA>       
-#>  8     2 なぜ    ナゼ    何故       なぜ     副詞  <NA>  <NA>  <NA>  <NA>       
-#>  9     2 貴様    キサマ  貴様       貴様     代名詞~ <NA>  <NA>  <NA>  <NA>       
-#> 10     2 等      トウ    等         等       接尾辞~ 名詞的~ 一般  <NA>  <NA>       
-#> # ... with 22 more rows, and 2 more variables: X5StageUse2 <chr>, isOOV <lgl>
+#>    sentence_id Surface   Reading  Normalized Original  POS1   POS2   POS3  POS4 
+#>          <int> <chr>     <chr>    <chr>      <chr>     <chr>  <chr>  <chr> <chr>
+#>  1           1 なぜ      ナゼ     何故       なぜ      副詞   <NA>   <NA>  <NA> 
+#>  2           1 分かり合~ ワカリ~  分かり合う 分かり合~ 動詞   一般   <NA>  <NA> 
+#>  3           1 ない      ナイ     ない       ない      助動詞 <NA>   <NA>  <NA> 
+#>  4           1 の        ノ       の         の        助詞   準体~  <NA>  <NA> 
+#>  5           1 か        カ       か         か        助詞   終助詞 <NA>  <NA> 
+#>  6           1 ！        キゴウ   ！         !         補助~  句点   <NA>  <NA> 
+#>  7           1 ？        キゴウ   ？         ？        補助~  句点   <NA>  <NA> 
+#>  8           2 なぜ      ナゼ     何故       なぜ      副詞   <NA>   <NA>  <NA> 
+#>  9           2 貴様      キサマ   貴様       貴様      代名詞 <NA>   <NA>  <NA> 
+#> 10           2 等        トウ     等         等        接尾辞 名詞的 一般  <NA> 
+#> # ... with 22 more rows, and 3 more variables: X5StageUse1 <chr>,
+#> #   X5StageUse2 <chr>, isOOV <lgl>
 ```
 
 ### Use Kintoki
@@ -66,20 +67,20 @@ krikinton::kintoki(c(
   "えー、まぁ今回はその件で伺いました。"
 ))
 #> # A tibble: 38 x 14
-#>      Sid   Cid  Link  Score  Head  Func   Tid Surface POS1  POS2  POS3  POS4 
-#>    <int> <int> <int>  <dbl> <int> <int> <int> <chr>   <chr> <chr> <chr> <chr>
-#>  1     1     0     6 -2.18      0     0     0 とにかく~ 副詞  <NA>  <NA>  <NA> 
-#>  2     1     1     3  0.190     0     0     0 不様    名詞  普通名詞~ 形状詞可~ <NA> 
-#>  3     1     1     3  0.190     0     0     1 、      補助記号~ 読点  <NA>  <NA> 
-#>  4     1     2     3  1.60      0     0     0 そんな  連体詞~ <NA>  <NA>  <NA> 
-#>  5     1     3     6 -2.18      0     2     0 事      名詞  普通名詞~ 一般  <NA> 
-#>  6     1     3     6 -2.18      0     2     1 で      助詞  格助詞~ <NA>  <NA> 
-#>  7     1     3     6 -2.18      0     2     2 は      助詞  係助詞~ <NA>  <NA> 
-#>  8     1     4     5  0.915     0     0     0 あの    感動詞~ フィラー~ <NA>  <NA> 
-#>  9     1     5     6 -2.18      0     2     0 小娘    名詞  普通名詞~ 一般  <NA> 
-#> 10     1     5     6 -2.18      0     2     1 に      助詞  格助詞~ <NA>  <NA> 
-#> # ... with 28 more rows, and 2 more variables: X5StageUse1 <chr>,
-#> #   X5StageUse2 <chr>
+#>    sentence_id chunk_id  Link  Score  Head  Func token_id Surface  POS1   POS2  
+#>          <int>    <int> <int>  <dbl> <int> <int>    <int> <chr>    <chr>  <chr> 
+#>  1           1        0     6 -2.18      0     0        0 とにかく 副詞   <NA>  
+#>  2           1        1     3  0.190     0     0        0 不様     名詞   普通~ 
+#>  3           1        1     3  0.190     0     0        1 、       補助~  読点  
+#>  4           1        2     3  1.60      0     0        0 そんな   連体詞 <NA>  
+#>  5           1        3     6 -2.18      0     2        0 事       名詞   普通~ 
+#>  6           1        3     6 -2.18      0     2        1 で       助詞   格助詞
+#>  7           1        3     6 -2.18      0     2        2 は       助詞   係助詞
+#>  8           1        4     5  0.915     0     0        0 あの     感動詞 フィ~ 
+#>  9           1        5     6 -2.18      0     2        0 小娘     名詞   普通~ 
+#> 10           1        5     6 -2.18      0     2        1 に       助詞   格助詞
+#> # ... with 28 more rows, and 4 more variables: POS3 <chr>, POS4 <chr>,
+#> #   X5StageUse1 <chr>, X5StageUse2 <chr>
 ```
 
 ## Disclaimers
@@ -118,14 +119,7 @@ As referred here, you can use these model files for only
 research/private use with your own responsibility. For commercial use,
 you must prepare your original model files so as to use this software.
 
-## Code of Conduct
-
-Please note that the krikinton project is released with a [Contributor
-Code of
-Conduct](https://paithiov909.github.io/krikinton/CODE_OF_CONDUCT.html).
-By contributing to this project, you agree to abide by its terms.
-
-## Licenses
+## License
 
 MIT license.
 
